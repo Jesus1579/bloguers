@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Http\Traits\EmailVerificationTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,7 +14,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, HasRoles, SoftDeletes, EmailVerificationTrait;
+    use Notifiable, HasRoles, SoftDeletes, EmailVerificationTrait, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +26,8 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'email',
         'name',
+        'last_name',
+        'main_image',
         'password',
         'verification_token',
     ];
@@ -35,7 +38,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','created_at', 'updated_at', 'delated_at'
     ];
 
     /**

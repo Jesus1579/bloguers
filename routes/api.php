@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Api\Auth\{AuthenticationController, PasswordResetController};
 use App\Http\Controllers\Api\{
-    BankController, CourierTypeController, ManagerTypeController, RoleController
+    BankController,
+    CourierTypeController,
+    ManagerTypeController,
+    RoleController
 };
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -33,24 +36,10 @@ Route::prefix('users')->group(function () {
     require base_path('routes/apiRoutes/UsersApiRoutes.php');
 });
 
-//Requeriments Routes
-Route::prefix('requeriments')->group(function () {
-    require base_path('routes/apiRoutes/RequerimentApiRoutes.php');
-});
-
 Route::post('email-resend-verification', [AuthenticationController::class,'resendVerifyEmail'])->middleware(['throttle:5,60']);
-
-//Orders Routes
-Route::prefix('orders')->group(function () {
-    require base_path('routes/apiRoutes/OrdersApiRoutes.php');
-});
-
-//Banks Routes
-Route::prefix('banks')->group(function () {
-    require base_path('routes/apiRoutes/BankApiRoutes.php');
-});
 
 Route::group(['middleware' => ['jwt.verify']], function() {
 
     Route::get('/verify',[AuthenticationController::class,'getAuthenticatedUser']);
 });
+

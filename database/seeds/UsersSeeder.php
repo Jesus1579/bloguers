@@ -21,21 +21,9 @@ class UsersSeeder extends Seeder
 				"email" => "admin@cronapis.com",
 				"password" => bcrypt("admin123"),
 				"role" => "admin"
-			],
-			[
-				"name" => "Admin 2",
-				"last_name" => "Cronapis 2",
-				"email" => "admin2@cronapis.com",
-				"password" => bcrypt("admin123"),
-				"role" => "admin"
 			]
-		];
-		foreach ($array as $arr) {
-			$u = User::firstOrCreate([
-				"email" => $arr['email']
-			], collect($arr)->except('role')->all());
-			if (!$u->hasRole($arr['role']))
-				$u->assignRole($arr['role']);
+			];
+			$u = User::firstOrCreate($array);
 		}
-	}
+
 }

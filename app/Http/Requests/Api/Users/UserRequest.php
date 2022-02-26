@@ -34,12 +34,9 @@ class UserRequest extends BaseRequest
                 'string',
                 'max:50'
             ],
-            'phone' => [
-                'nullable',
-                'digits_between:7,20',
-                Rule::unique('users','phone')
+            'profile_image' => [
+                'max:1024',
             ],
-            'profile_image' => ['max:100'],
             'email' => [
                 'required',
                 'email',
@@ -70,12 +67,9 @@ class UserRequest extends BaseRequest
                 'string',
                 'max:50'
             ],
-            'phone' => [
-                'nullable',
-                'digits_between:7,20',
-                Rule::unique('users','phone')->ignore($id, 'id')
+            'main_image' => [
+                'max:1024',
             ],
-            'profile_image' => ['max:100'],
             'email' => [
                 'email',
                 'max:50',

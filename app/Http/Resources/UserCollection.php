@@ -19,7 +19,7 @@ class UserCollection extends JsonResource
 			"name" => $this->name,
 			"email" => $this->email,
 			"last_name" => $this->last_name,
-			"profile_image" => $this->profile_image,
+			"main_image" => $this->profile_image,
 			"roles"=>$this->roles
 		];
 
