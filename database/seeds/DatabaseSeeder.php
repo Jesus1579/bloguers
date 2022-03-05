@@ -2,16 +2,15 @@
 
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\UsersSeeder;
-//use Database\Seeders\RoleSeeder;
-use App\Models\{
-    User,
-    Category,
-    Label,
-    Post,
-    Comment,
+use Database\Seeders\{
+    UsersSeeder,
+    LabelSeeder,
+    PostSeeder,
+    CommentSeeder,
+    PostLabelSeeder,
+    RoleSeeder,
+    CategorySeeder,
 };
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -21,18 +20,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /*$seedersArray = [
+
+        $this->call([
             RoleSeeder::class,
             UsersSeeder::class,
-        ];
-        //call seeders
-        foreach ($seedersArray as $seeder) $this->call($seeder);*/
+            LabelSeeder::class,
+            CategorySeeder::class,
+            PostSeeder::class,
+            CommentSeeder::class,
+            PostLabelSeeder::class,
 
-    User::factory(25)->create();
-    Category::factory(10)->create();
-    Label::factory(25)->create();
-    Post::factory(50)->create();
-    Comment::factory(8)->create();
-
+        ]);
     }
 }

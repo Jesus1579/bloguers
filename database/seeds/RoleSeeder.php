@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -12,7 +14,6 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        //Roles
         $rolesArray=[
             ['name' => 'admin'],
             ['name' => 'blogled'],
@@ -20,7 +21,5 @@ class RoleSeeder extends Seeder
         foreach ($rolesArray as $role) {
             Role::firstOrCreate(['name' => $role['name']]);
         }
-        //rolesArray
     }
-
 }

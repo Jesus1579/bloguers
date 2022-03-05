@@ -26,7 +26,7 @@ class UserFactory extends Factory
         return [
             'name' => $faker->name,
             'last_name' => $faker->lastName,
-            'main_image' => $faker->image(public_path('images'),250,200),
+            'main_image' => 'https://picsum.photos/200/300',
             'email' => $faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'),
